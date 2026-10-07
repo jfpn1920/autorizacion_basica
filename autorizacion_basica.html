@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>autorizacion basica</title>
+    <link rel="stylesheet" href="autorizacion_basica.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="autorizacion_basica.js" defer></script>
+</head>
+<body>
+    <!---------------------------------------->
+    <!--|estructuracion_autorizacion_basica|-->
+    <!---------------------------------------->
+    <main class="app">
+        <!-- ENCABEZADO: título y descripción -->
+        <header class="encabezado">
+            <h1>Autorización Básica</h1>
+            <p>Revisa las solicitudes y decide si las aceptas o las rechazas.</p>
+        </header>
+        <!-- PANEL 1: formulario para crear una solicitud -->
+        <section class="panel">
+            <h2>Nueva solicitud</h2>
+            <!-- novalidate: la validación la hacemos nosotros con JavaScript -->
+            <form id="formulario" novalidate>
+                <!-- Fila con dos campos lado a lado -->
+                <div class="fila">
+                    <div class="campo">
+                        <label for="solicitante">Solicitante</label>
+                        <input type="text" id="solicitante" placeholder="Ej: Laura Gómez"
+                            maxlength="30" autocomplete="off">
+                    </div>
+                    <div class="campo">
+                        <label for="tipo">Tipo</label>
+                        <select id="tipo">
+                            <option>Permiso</option>
+                            <option>Compra</option>
+                            <option>Vacaciones</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Campo: detalle de lo que se solicita -->
+                <div class="campo">
+                    <label for="detalle">Detalle</label>
+                    <input type="text" id="detalle" placeholder="Ej: Salir temprano el viernes"
+                        maxlength="80" autocomplete="off">
+                </div>
+                <!-- Aquí JavaScript escribe los mensajes de error -->
+                <p id="mensaje" class="mensaje" role="alert"></p>
+                <!-- Botón que envía el formulario -->
+                <button type="submit" class="boton">Crear solicitud</button>
+            </form>
+        </section>
+        <!-- PANEL 2: filtros y lista de solicitudes -->
+        <section class="panel">
+            <!-- Filtros: cada botón muestra cuántas solicitudes tiene (data-filtro) -->
+            <nav class="filtros">
+                <button class="filtro" data-filtro="pendiente" type="button">
+                    Pendientes <span id="contPendiente">0</span>
+                </button>
+                <button class="filtro" data-filtro="aceptada" type="button">
+                    Aceptadas <span id="contAceptada">0</span>
+                </button>
+                <button class="filtro" data-filtro="rechazada" type="button">
+                    Rechazadas <span id="contRechazada">0</span>
+                </button>
+                <button class="filtro" data-filtro="todas" type="button">
+                    Todas <span id="contTodas">0</span>
+                </button>
+            </nav>
+            <!-- Texto que se muestra cuando no hay solicitudes en el filtro -->
+            <p id="vacio" class="vacio" hidden></p>
+            <!-- Lista donde JavaScript inserta cada solicitud -->
+            <ul id="lista" class="lista"></ul>
+        </section>
+    </main>
+</body>
+</html>

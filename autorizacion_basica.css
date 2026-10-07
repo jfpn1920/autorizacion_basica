@@ -1,0 +1,191 @@
+/* ===== VARIABLES DE COLOR (se usan en todo el archivo) ===== */
+:root {
+    --fondo: #edf0f2;          /* fondo de la página */
+    --panel: #ffffff;          /* fondo de las tarjetas */
+    --texto: #1f2a33;          /* color principal del texto */
+    --texto-suave: #63717d;    /* textos secundarios */
+    --borde: #d5dbe0;          /* color de los bordes */
+    --acento: #2f4858;         /* azul oscuro: botones y filtros */
+    --aceptar: #2a8c4a;        /* verde: aceptar */
+    --rechazar: #c0392b;       /* rojo: rechazar */
+    --pendiente: #c98a0b;      /* ámbar: pendiente */
+}
+/* ===== REINICIO BÁSICO ===== */
+* {
+    box-sizing: border-box;    /* el padding no agranda los elementos */
+    margin: 0;
+    padding: 0;
+}
+/* Hace que el atributo "hidden" siempre oculte el elemento */
+[hidden] {
+    display: none !important;
+}
+/* ===== ESTILO GENERAL DE LA PÁGINA ===== */
+body {
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.5;
+    padding: 24px 16px;
+}
+/* Contenedor central con ancho máximo */
+.app {
+    max-width: 620px;
+    margin: 0 auto;
+}
+/* ===== ENCABEZADO ===== */
+.encabezado {
+    margin-bottom: 20px;
+}
+.encabezado h1 {
+    font-size: 2rem;
+    color: var(--acento);
+}
+.encabezado p {
+    color: var(--texto-suave);
+}
+/* ===== TARJETAS (paneles) ===== */
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+.panel h2 {
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+}
+/* ===== FORMULARIO ===== */
+.fila {
+    display: flex;
+    gap: 12px;
+}
+.campo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;    /* etiqueta arriba, campo abajo */
+    gap: 4px;
+    margin-bottom: 12px;
+}
+label {
+    font-size: 0.9rem;
+    color: var(--texto-suave);
+}
+input,
+select {
+    padding: 10px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    width: 100%;
+    background: #fff;
+}
+input:focus,
+select:focus {
+    outline: 2px solid var(--acento);
+}
+/* Mensaje de error del formulario */
+.mensaje {
+    color: var(--rechazar);
+    font-size: 0.9rem;
+    min-height: 1.3em;         /* evita que el diseño salte al aparecer */
+    margin-bottom: 8px;
+}
+.boton {
+    width: 100%;
+    padding: 12px;
+    background: var(--acento);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+/* ===== FILTROS ===== */
+.filtros {
+    display: flex;
+    flex-wrap: wrap;           /* en pantallas pequeñas bajan de línea */
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.filtro {
+    padding: 6px 12px;
+    background: none;
+    color: var(--texto);
+    border: 1px solid var(--borde);
+    border-radius: 20px;
+    cursor: pointer;
+}
+/* Filtro seleccionado (JavaScript le agrega la clase "activo") */
+.filtro.activo {
+    background: var(--acento);
+    border-color: var(--acento);
+    color: #fff;
+}
+/* ===== LISTA DE SOLICITUDES ===== */
+.lista {
+    list-style: none;
+}
+.item {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--borde);
+}
+.item:last-child {
+    border-bottom: none;
+}
+.item-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.item-nombre {
+    font-weight: bold;
+}
+.item-detalle,
+.vacio {
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+}
+/* Etiqueta de estado: su color cambia según la clase */
+.estado {
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 2px 10px;
+    border-radius: 12px;
+    color: #fff;
+}
+.estado.pendiente { background: var(--pendiente); }
+.estado.aceptada { background: var(--aceptar); }
+.estado.rechazada { background: var(--rechazar); }
+/* ===== BOTONES DE ACCIÓN ===== */
+.acciones {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+.btn-aceptar,
+.btn-rechazar,
+.btn-neutro {
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+.btn-aceptar {
+    background: var(--aceptar);
+    border: none;
+    color: #fff;
+}
+.btn-rechazar {
+    background: var(--rechazar);
+    border: none;
+    color: #fff;
+}
+.btn-neutro {
+    background: none;
+    border: 1px solid var(--borde);
+    color: var(--texto-suave);
+}
